@@ -87,30 +87,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Efecto hero: fondo blanco -> negro y vídeo encogiéndose ligeramente,
 // todo sincronizado en el mismo tramo de scroll (termina al 40% del scroll del hero)
-const heroVideoTl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".video-sticky-container",
-        start: "top top",
-        end: "+=40%",
-        scrub: 0.6,
-    }
-});
+// Este efecto (encoger el vídeo + fondo a negro mientras se hace scroll)
+// solo se activa en escritorio. En mobile daba problemas de tamaño/recorte,
+// así que ahí el vídeo se queda estático, sin animación.
+let heroVideoMM = gsap.matchMedia();
 
-heroVideoTl
-    .to(".video-sticky-container", {
-        backgroundColor: "#000000",
-        ease: "power2.out"
-    }, 0)
-    .to(".video-wrapper video", {
-        scale: 0.9,
-        borderRadius: "24px",
-        ease: "power2.out"
-    }, 0)
-    .to(".video-wrapper", {
-        paddingLeft: "130px",
-        paddingRight: "130px",
-        ease: "power2.out"
-    }, 0);
+heroVideoMM.add("(min-width: 769px)", () => {
+    const heroVideoTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".video-sticky-container",
+            start: "top top",
+            end: "+=40%",
+            scrub: 0.6,
+        }
+    });
+
+    heroVideoTl
+        .to(".video-sticky-container", {
+            backgroundColor: "#000000",
+            ease: "power2.out"
+        }, 0)
+        .to(".video-wrapper video", {
+            scale: 0.9,
+            borderRadius: "24px",
+            ease: "power2.out"
+        }, 0)
+        .to(".video-wrapper", {
+            paddingLeft: "130px",
+            paddingRight: "130px",
+            ease: "power2.out"
+        }, 0);
+});
 
 // Reveal con blur al hacer scroll (mismo efecto que el titular del Hero),
 // aplicado a: texto de Overview + link, y título/link/tarjetas de Casos de Estudio.
@@ -132,14 +139,14 @@ document.querySelectorAll('.reveal-blur').forEach((el, i) => {
             onEnter: () => {
                 if (tieneSubrayado) {
                     el._subrayadoTimeout = setTimeout(() => {
-                        el.querySelector('.highlight-text').classList.add("animated");
+                        el.querySelectorAll('.highlight-text').forEach(hl => hl.classList.add("animated"));
                     }, 1100);
                 }
             },
             onLeaveBack: () => {
                 if (tieneSubrayado) {
                     clearTimeout(el._subrayadoTimeout);
-                    el.querySelector('.highlight-text').classList.remove("animated");
+                    el.querySelectorAll('.highlight-text').forEach(hl => hl.classList.remove("animated"));
                 }
             }
         }
