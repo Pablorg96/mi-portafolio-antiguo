@@ -13,6 +13,18 @@ const casos = [
         title: "Línea de Cuidado Íntimo Masculino — Atresmedia",
         desc: "Vídeo de lanzamiento para la línea de cuidado íntimo masculino de MYHIXEL, producido para campaña en Atresmedia. Producción integral: concepto, guión, locución, grabación profesional, edición, color grading y postproducción con IA.",
         video: "D2Ire_zq_k4"
+    },
+    {
+        type: "image",
+        title: "MYHIXEL HUB — Diseño de Aplicación Móvil",
+        desc: "Diseño de la app que centraliza los programas de salud sexual masculina de MYHIXEL (Control y ED). Experiencia guiada B2C: fases de entrenamiento, contenido educativo, ejercicios y seguimiento de progreso, integrada con los dispositivos MYHIXEL. UX/UI orientado a consumidor final, pensado para facilitar la adherencia.",
+        image: "images/completa_hub.jpg"
+    },
+    {
+        type: "image",
+        title: "HORIXON — Diseño de Aplicación Móvil",
+        desc: "Diseño de la plataforma digital del ecosistema médico Horixon MedTech. Connected Care Platform B2B2C que conecta el trabajo del paciente en casa con el seguimiento clínico profesional: programas prescritos, ejercicios guiados, informes de evolución y contenido educativo en eyaculación precoz, disfunción eréctil y suelo pélvico. Integrable con Control, Trainer, Ring, VED/Pump y Pelvic.",
+        image: "images/completa_horixon.jpg"
     }
 ];
 
@@ -20,10 +32,22 @@ function abrirModal(index) {
     const caso = casos[index];
     const modal = document.getElementById("modal");
     const modalVideo = document.getElementById("modalVideo");
+    const modalImage = document.getElementById("modalImage");
     const modalTitle = document.getElementById("modalTitle");
     const modalDesc = document.getElementById("modalDesc");
 
-    modalVideo.src = `https://www.youtube.com/embed/${caso.video}?autoplay=1`;
+    if (caso.type === "image") {
+        modalVideo.style.display = "none";
+        modalVideo.src = "";
+        modalImage.style.display = "block";
+        modalImage.src = caso.image;
+    } else {
+        modalImage.style.display = "none";
+        modalImage.src = "";
+        modalVideo.style.display = "block";
+        modalVideo.src = `https://www.youtube.com/embed/${caso.video}?autoplay=1`;
+    }
+
     modalTitle.textContent = caso.title;
     modalDesc.textContent = caso.desc;
 
@@ -35,6 +59,7 @@ function cerrarModal() {
     const modal = document.getElementById("modal");
     modal.classList.remove("active");
     document.getElementById("modalVideo").src = "";
+    document.getElementById("modalImage").src = "";
     document.body.style.overflow = "auto";
 }
 

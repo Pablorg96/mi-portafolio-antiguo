@@ -218,7 +218,7 @@ body {
 
 /* Proyectos Destacados Grid */
 .casos-estudio {
-    padding: 40px 40px 120px;
+    padding: 40px 40px 60px;
 }
 
 .casos-header {
@@ -525,7 +525,7 @@ body {
 
 /* Testimonios */
 .testimonios {
-    padding: 140px 40px;
+    padding: 90px 40px;
     background-color: var(--white);
 }
 
@@ -1138,7 +1138,7 @@ body {
 /* Video Reel */
 .video-sticky-container {
     position: relative;
-    height: 180vh; /* carril de scroll: cuanto mayor, más dura el efecto */
+    height: 130vh; /* carril de scroll: cuanto mayor, más dura el efecto */
     background-color: #ffffff; /* GSAP lo animará hacia negro */
 }
 
@@ -1887,4 +1887,15 @@ body {
     .servicio-row.mobile-active {
         transition: background-color 0.3s ease, color 0.3s ease;
     }
+}
+
+
+/* Modal - imagen para proyectos tipo "image" (MYHIXEL HUB, HORIXON) */
+.modal-video img#modalImage {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
 }
