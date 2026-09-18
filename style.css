@@ -115,7 +115,7 @@ body {
     margin-top: 80px;
     padding: 100px 40px 60px;
     text-align: left;
-    min-height: 90vh;
+    min-height: 60vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -1018,7 +1018,7 @@ body {
 
     .footer-watermark {
         font-size: 22vw;
-        bottom: -2vw;
+        bottom: 10px;
     }
 
     .footer-bottom {
@@ -1138,7 +1138,7 @@ body {
 /* Video Reel */
 .video-sticky-container {
     position: relative;
-    height: 130vh; /* carril de scroll: cuanto mayor, más dura el efecto */
+    height: 105vh; /* carril de scroll: cuanto mayor, más dura el efecto */
     background-color: #ffffff; /* GSAP lo animará hacia negro */
 }
 
