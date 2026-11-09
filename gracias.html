@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! — Pablo Romero</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        :root { --orange: #FF6529; --black: #000; --gray-text: #666; --gray: #f5f5f5; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .logo-pill {
+            position: fixed; top: 20px; left: 24px;
+            padding: 12px 22px; border-radius: 999px;
+            background: #fff; color: #000;
+            font-size: 14px; font-weight: 700; text-decoration: none;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .watermark {
+            position: absolute; left: 50%; bottom: -0.18em; transform: translateX(-50%);
+            font-size: clamp(90px, 24vw, 360px); font-weight: 800; letter-spacing: -0.04em;
+            color: #f3f3f3; white-space: nowrap; user-select: none; pointer-events: none;
+            line-height: 1;
+        }
+        main {
+            position: relative; z-index: 1;
+            flex: 1; display: flex; flex-direction: column;
+            align-items: flex-start; justify-content: center;
+            width: 100%; max-width: 900px; margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+        .check {
+            width: 76px; height: 76px; border-radius: 50%;
+            background: var(--orange);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 32px;
+            animation: pop .6s cubic-bezier(.2,1.4,.4,1) both;
+        }
+        .check svg { width: 38px; height: 38px; }
+        .check path {
+            stroke: #fff; stroke-width: 3.2; fill: none; stroke-linecap: round; stroke-linejoin: round;
+            stroke-dasharray: 30; stroke-dashoffset: 30;
+            animation: draw .5s .45s ease forwards;
+        }
+        h1 {
+            font-size: clamp(52px, 11vw, 120px); line-height: 1; font-weight: 800; letter-spacing: -0.03em;
+            animation: up .7s .15s ease both;
+        }
+        h1 span { color: var(--orange); }
+        p {
+            margin-top: 24px; max-width: 520px;
+            font-size: 18px; line-height: 1.7; color: var(--gray-text);
+            animation: up .7s .3s ease both;
+        }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; animation: up .7s .45s ease both; }
+        .btn {
+            display: inline-flex; align-items: center; padding: 14px 26px; border-radius: 999px;
+            border: 1px solid var(--black); background: var(--black); color: #fff;
+            font-size: 14px; font-weight: 600; text-decoration: none; transition: all .3s ease;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--black); }
+        .btn-outline:hover { background: var(--black); color: #fff; }
+        @keyframes pop { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+        @keyframes up { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .check path { stroke-dashoffset: 0; } }
+        @media (max-width: 600px) { .logo-pill { left: 16px; top: 16px; } main { padding: 110px 20px 80px; } p { font-size: 16px; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="logo-pill">Pablo Romero</a>
+    <div class="watermark" aria-hidden="true">GRACIAS</div>
+    <main>
+        <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h1><span>¡</span>Gracias<span>.</span></h1>
+        <p>He recibido tu mensaje. Te responderé lo antes posible al correo que me has dejado.</p>
+        <div class="actions">
+            <a href="index.html" class="btn">Volver al inicio</a>
+            <a href="index.html#proyectos" class="btn btn-outline">Ver proyectos</a>
+        </div>
+    </main>
+</body>
+</html>
