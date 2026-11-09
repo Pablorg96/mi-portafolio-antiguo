@@ -45,7 +45,7 @@ function abrirModal(index) {
         modalImage.style.display = "none";
         modalImage.src = "";
         modalVideo.style.display = "block";
-        modalVideo.src = `https://www.youtube.com/embed/${caso.video}?autoplay=1`;
+        modalVideo.src = `https://www.youtube-nocookie.com/embed/${caso.video}?autoplay=1`;
     }
 
     modalTitle.textContent = caso.title;

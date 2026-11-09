@@ -2143,3 +2143,52 @@ body {
 .footer-social-links a:hover {
     opacity: 1;
 }
+
+
+/* Formulario: casilla de privacidad · Footer: enlaces legales */
+.contacto-form .contacto-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+}
+
+.contacto-form .contacto-consent input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    padding: 0;
+    accent-color: #FF6529;
+    cursor: pointer;
+}
+
+.contacto-consent a {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin-top: 14px;
+}
+
+.footer-legal a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--white);
+}

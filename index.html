@@ -25,7 +25,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
     <!-- Navbar (Pill Navigation) -->
@@ -438,6 +438,11 @@
                 <label for="contactoProyecto">Tu proyecto</label>
                 <textarea id="contactoProyecto" name="Proyecto" placeholder="Cuéntame en qué estás pensando" rows="5" required></textarea>
 
+                <label class="contacto-consent" for="contactoPrivacidad">
+                    <input type="checkbox" id="contactoPrivacidad" name="Acepta_privacidad" value="Sí" required>
+                    <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+                </label>
+
                 <button type="submit" class="contacto-submit">Enviar</button>
             </form>
         </div>
@@ -476,11 +481,16 @@
 
         <div class="footer-bottom">
             <p>&copy; 2026 Pablo Romero. Todos los derechos reservados.</p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="aviso-legal.html">Aviso legal</a>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="cookies.html">Cookies</a>
+            </nav>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
