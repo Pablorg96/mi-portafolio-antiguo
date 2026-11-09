@@ -403,10 +403,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.3
+        threshold: 0.6
     });
 
-    observer.observe(watermark);
+    // Se observa la franja inferior del footer (siempre visible dentro del footer) y no la propia
+    // marca de agua: en móvil la marca queda recortada por el overflow del footer mientras
+    // está desplazada, así que el observador nunca la veía como "visible".
+    observer.observe(document.querySelector('.footer-bottom') || watermark);
 })();
 
 // Testimonios: Scroll Reveal en cascada con GSAP (título primero, luego cada tarjeta con 0.15s de diferencia)

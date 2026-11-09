@@ -2232,3 +2232,22 @@ summary:focus-visible,
         transition: none !important;
     }
 }
+
+
+/* Footer móvil: la marca de agua "GRACIAS" cabe en pantalla, queda bajo los enlaces legales
+   (sin taparlos) y se ve un poco más que en escritorio porque la pantalla es pequeña */
+@media (max-width: 900px) {
+    .footer {
+        padding-bottom: calc(18.5vw + 36px);
+    }
+
+    .footer-watermark {
+        font-size: 18.5vw;
+        letter-spacing: 2px;
+        bottom: 14px;
+    }
+
+    .footer-watermark.visible {
+        opacity: 0.1;
+    }
+}
