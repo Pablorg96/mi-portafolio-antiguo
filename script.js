@@ -496,3 +496,23 @@ gsap.to(".testimonios .reveal-up", {
     aplicar();
     reduce.addEventListener('change', aplicar);
 })();
+
+
+// Modo noche / luz: recuerda la elección y, si no hay, sigue la del sistema
+(function () {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    function aplicar(t) {
+        root.setAttribute('data-theme', t);
+        btn.setAttribute('aria-label', t === 'dark' ? 'Cambiar a modo luz' : 'Cambiar a modo noche');
+        if (meta) meta.content = t === 'dark' ? '#0e0e0e' : '#ffffff';
+    }
+    aplicar(root.getAttribute('data-theme') || 'light');
+    btn.addEventListener('click', () => {
+        const t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        aplicar(t);
+        try { localStorage.setItem('theme', t); } catch (e) {}
+    });
+})();

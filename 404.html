@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada — Pablo Romero</title>
@@ -83,6 +84,15 @@
         @keyframes up { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .check path { stroke-dashoffset: 0; } }
         @media (max-width: 600px) { .logo-pill { left: 16px; top: 16px; } main { padding: 110px 20px 80px; } p { font-size: 16px; } }
+
+        :root[data-theme="dark"] body { background: #0e0e0e; color: #f2f2f2; }
+        :root[data-theme="dark"] { --black: #f2f2f2; --gray-text: #a3a3a3; --gray: #1b1b1b; color-scheme: dark; }
+        :root[data-theme="dark"] .logo-pill { background: #0e0e0e; color: #f2f2f2; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
+        :root[data-theme="dark"] .watermark { color: #181818; }
+        :root[data-theme="dark"] .btn { color: #0e0e0e; }
+        :root[data-theme="dark"] .btn-outline { color: #f2f2f2; }
+        :root[data-theme="dark"] .btn-outline:hover { color: #0e0e0e; }
+        :root[data-theme="dark"] .check path { stroke: #fff; }
     </style>
 </head>
 <body>

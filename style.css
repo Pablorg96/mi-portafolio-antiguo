@@ -10,6 +10,8 @@
     --gray: #f5f5f5;
     --gray-text: #666666;
     --gray-border: #e0e0e0;
+    --card: #ffffff;
+    color-scheme: light;
 }
 
 html {
@@ -568,7 +570,7 @@ body {
     margin: 0 auto;
     padding: 60px;
     border-radius: 28px;
-    background-color: #FFFFFF;
+    background-color: var(--card);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
@@ -1139,7 +1141,7 @@ body {
 .video-sticky-container {
     position: relative;
     height: 105vh; /* carril de scroll: cuanto mayor, más dura el efecto */
-    background-color: #ffffff; /* GSAP lo animará hacia negro */
+    background-color: var(--white); /* GSAP lo animará hacia negro */
 }
 
 .video-wrapper {
@@ -2293,4 +2295,85 @@ summary:focus-visible,
         width: 22px;
         background-color: #FF6529;
     }
+}
+
+
+/* ===== Modo noche / luz ===== */
+:root[data-theme="dark"] {
+    --black: #f2f2f2;
+    --white: #0e0e0e;
+    --gray: #1b1b1b;
+    --gray-text: #a3a3a3;
+    --gray-border: #2f2f2f;
+    --card: #181818;
+    color-scheme: dark;
+}
+
+body, .navbar, .logo-pill, .pill-nav, .about-section, .testimonio-card {
+    transition: background-color .35s ease, color .35s ease;
+}
+
+/* Elementos con fondo oscuro fijo: mantienen texto claro */
+:root[data-theme="dark"] .contacto-form label,
+:root[data-theme="dark"] .contacto-form input,
+:root[data-theme="dark"] .contacto-form textarea,
+:root[data-theme="dark"] .contacto-consent a,
+:root[data-theme="dark"] .footer-legal a:hover,
+:root[data-theme="dark"] .servicios-list .servicio-row.is-active {
+    color: #ffffff;
+}
+:root[data-theme="dark"] .contacto-submit {
+    background-color: #ffffff;
+    color: #000000;
+}
+:root[data-theme="dark"] .contacto-form {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+:root[data-theme="dark"] .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+:root[data-theme="dark"] .about-section,
+:root[data-theme="dark"] .about-hola,
+:root[data-theme="dark"] .about-summary,
+:root[data-theme="dark"] .about-detail {
+    color: #f2f2f2;
+}
+:root[data-theme="dark"] .logo-item img {
+    filter: brightness(0) invert(1);
+    opacity: .85;
+}
+:root[data-theme="dark"] .logo-pill,
+:root[data-theme="dark"] .pill-nav {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+:root[data-theme="dark"] .testimonio-card {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de cambio de tema */
+.theme-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--gray-border);
+    background: var(--white);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform .25s ease, background-color .35s ease, color .35s ease;
+}
+.theme-toggle:hover { transform: scale(1.08); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+@media (max-width: 768px) {
+    .theme-toggle { right: 14px; bottom: 14px; width: 42px; height: 42px; }
 }

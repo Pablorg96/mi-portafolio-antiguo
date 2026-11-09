@@ -26,3 +26,17 @@ body {
 }
 .legal-footer a { font-size: 13px; color: #666; text-decoration: none; }
 .legal-footer a:hover { color: #000; }
+
+/* Modo noche (sigue la elección guardada en la web principal) */
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="dark"] body { background: #0e0e0e; color: #f2f2f2; }
+:root[data-theme="dark"] .legal-back,
+:root[data-theme="dark"] .legal-date,
+:root[data-theme="dark"] .legal-footer a { color: #a3a3a3; }
+:root[data-theme="dark"] .legal-back:hover,
+:root[data-theme="dark"] .legal-footer a:hover { color: #fff; }
+:root[data-theme="dark"] .legal p,
+:root[data-theme="dark"] .legal li { color: #d0d0d0; }
+:root[data-theme="dark"] .legal a { color: #fff; }
+:root[data-theme="dark"] .legal a:hover { color: #FF6529; }
+:root[data-theme="dark"] .legal-footer { border-top-color: #2f2f2f; }

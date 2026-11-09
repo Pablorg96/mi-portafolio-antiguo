@@ -6,6 +6,7 @@
     <title>Pablo Romero — UX/UI Designer & Productor Audiovisual</title>
     <meta name="description" content="Portfolio de Pablo Romero: UX/UI Designer y Productor Audiovisual Senior afincado en Sevilla. Diseño de producto, dirección audiovisual y campañas 360º.">
     <meta name="theme-color" content="#ffffff">
+    <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m&&t==="dark")m.content="#0e0e0e";}catch(e){}})();</script>
 
     <!-- Compartir en redes (Open Graph / Twitter) -->
     <link rel="canonical" href="https://pablorg96.github.io/mi-portafolio/">
@@ -25,9 +26,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo noche" title="Modo noche / luz">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
     <!-- Navbar (Pill Navigation) -->
     <nav class="navbar">
         <a href="#inicio" class="logo-pill">Pablo Romero</a>
@@ -492,6 +497,6 @@
 
     <script src="vendor/gsap.min.js"></script>
     <script src="vendor/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>
