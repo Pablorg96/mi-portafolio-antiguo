@@ -2351,13 +2351,13 @@ body, .navbar, .logo-pill, .pill-nav, .about-section, .testimonio-card {
 }
 
 /* Botón de cambio de tema */
+.navbar { gap: 12px; }
+.logo-pill { margin-right: auto; }
 .theme-toggle {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1100;
-    width: 44px;
-    height: 44px;
+    pointer-events: auto;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: 1px solid var(--gray-border);
     background: var(--white);
@@ -2375,5 +2375,6 @@ body, .navbar, .logo-pill, .pill-nav, .about-section, .testimonio-card {
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
 @media (max-width: 768px) {
-    .theme-toggle { right: 14px; bottom: 14px; width: 42px; height: 42px; }
+    .theme-toggle { position: fixed; top: 66px; right: 16px; width: 38px; height: 38px; }
+    .theme-toggle svg { width: 18px; height: 18px; }
 }
