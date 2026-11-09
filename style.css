@@ -2171,6 +2171,18 @@ body {
     cursor: pointer;
 }
 
+.contacto-form .contacto-legal-info {
+    margin: 14px 0 0;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contacto-legal-info a {
+    color: var(--white);
+    text-decoration: underline;
+}
+
 .contacto-consent a {
     color: var(--white);
     text-decoration: underline;
@@ -2318,6 +2330,7 @@ body, .navbar, .logo-pill, .pill-nav, .about-section, .testimonio-card {
 :root[data-theme="dark"] .contacto-form input,
 :root[data-theme="dark"] .contacto-form textarea,
 :root[data-theme="dark"] .contacto-consent a,
+:root[data-theme="dark"] .contacto-legal-info a,
 :root[data-theme="dark"] .footer-legal a:hover,
 :root[data-theme="dark"] .servicios-list .servicio-row.is-active {
     color: #ffffff;
