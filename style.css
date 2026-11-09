@@ -2071,3 +2071,75 @@ body {
         opacity: 1;
     }
 }
+
+
+/* Contacto: email visible y botones de CV · Footer: enlaces a perfiles */
+.contacto-email {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--black);
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-border);
+    padding-bottom: 2px;
+    transition: border-color 0.3s ease;
+}
+
+.contacto-email:hover {
+    border-color: var(--black);
+}
+
+.contacto-cv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--black);
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cv-btn:hover {
+    transform: translateY(-2px);
+}
+
+.cv-btn-outline {
+    background-color: transparent;
+    color: var(--black);
+}
+
+.cv-btn-outline:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.footer-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.footer-social-links a {
+    color: #F2F2F2;
+    font-size: 14px;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    opacity: 1;
+}
