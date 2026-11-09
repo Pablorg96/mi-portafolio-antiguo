@@ -2192,3 +2192,43 @@ body {
 .footer-legal a:hover {
     color: var(--white);
 }
+
+
+/* Accesibilidad: foco visible con teclado */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+.servicio-row:focus-visible {
+    outline: 2px solid #FF6529;
+    outline-offset: 3px;
+}
+
+/* Accesibilidad: quien tiene activado "reducir movimiento" ve todo sin animaciones */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    .reveal-blur,
+    .reveal-up {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+
+    .hero-title .words {
+        animation: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+
+    .logos-track {
+        animation: none !important;
+    }
+
+    .servicio-image,
+    .servicio-row,
+    .cv-btn,
+    .social-icon {
+        transition: none !important;
+    }
+}

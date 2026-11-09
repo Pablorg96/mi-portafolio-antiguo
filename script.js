@@ -465,3 +465,16 @@ gsap.to(".testimonios .reveal-up", {
 
     resetAutoplay();
 })();
+
+
+// Accesibilidad: si el sistema pide "reducir movimiento", el vídeo del hero no se reproduce solo
+(function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const video = document.getElementById('heroVideo');
+    if (!video) return;
+    function aplicar() {
+        if (reduce.matches) { video.removeAttribute('autoplay'); video.pause(); }
+    }
+    aplicar();
+    reduce.addEventListener('change', aplicar);
+})();
