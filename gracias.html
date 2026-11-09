@@ -58,7 +58,11 @@
             font-size: clamp(52px, 11vw, 120px); line-height: 1; font-weight: 800; letter-spacing: -0.03em;
             animation: up .7s .15s ease both;
         }
-        h1 span { color: var(--orange); }
+        .ex { display: inline-block; height: .72em; width: .2em; overflow: visible; }
+        .ex .stem { fill: currentColor; stroke: currentColor; stroke-width: 4; stroke-linejoin: round; }
+        .ex .dot { fill: var(--orange); }
+        .ex-open { transform: rotate(180deg); vertical-align: -.1em; margin-right: .06em; }
+        .ex-close { vertical-align: baseline; margin-left: .05em; }
         p {
             margin-top: 24px; max-width: 520px;
             font-size: 18px; line-height: 1.7; color: var(--gray-text);
@@ -87,7 +91,7 @@
         <div class="check" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
         </div>
-        <h1><span>¡</span>Gracias<span>!</span></h1>
+        <h1 aria-label="¡Gracias!"><svg class="ex ex-open" viewBox="0 0 20 72" aria-hidden="true"><path class="stem" d="M3.5 3.5h13l-2.2 41h-8.6z"/><circle class="dot" cx="10" cy="62" r="8.5"/></svg>Gracias<svg class="ex ex-close" viewBox="0 0 20 72" aria-hidden="true"><path class="stem" d="M3.5 3.5h13l-2.2 41h-8.6z"/><circle class="dot" cx="10" cy="62" r="8.5"/></svg></h1>
         <p>He recibido tu mensaje. Te responderé lo antes posible al correo que me has dejado.</p>
         <div class="actions">
             <a href="index.html" class="btn">Volver al inicio</a>
