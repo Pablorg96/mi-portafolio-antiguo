@@ -1930,3 +1930,144 @@ body {
     border-radius: 12px;
     display: block;
 }
+
+
+/* Servicios móvil (v5): carrusel horizontal de tarjetas.
+   Estética: número + título + texto siempre visibles; la tarjeta activa
+   (la que queda centrada al deslizar) muestra su foto de fondo y texto blanco. */
+@media (max-width: 768px) {
+    .servicios-list {
+        counter-reset: servicio;
+        flex-direction: row;
+        align-items: stretch;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        margin: 0 -20px;
+        padding: 0 20px;
+        border-top: 1px solid var(--gray-border);
+        border-bottom: 1px solid var(--gray-border);
+    }
+
+    .servicios-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .servicios-list .servicio-row,
+    .servicios-list .servicio-row:hover,
+    .servicios-list .servicio-row.mobile-active {
+        counter-increment: servicio;
+        flex: 0 0 76vw;
+        max-width: 320px;
+        min-height: 440px;
+        width: auto;
+        margin: 0;
+        left: auto;
+        right: auto;
+        padding: 28px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
+        border-bottom: none;
+        border-left: 1px solid var(--gray-border);
+        background-color: var(--white);
+        color: var(--black);
+        transition: color 0.45s ease;
+    }
+
+    .servicios-list .servicio-row:last-child {
+        border-right: 1px solid var(--gray-border);
+    }
+
+    .servicio-left,
+    .servicio-expand,
+    .servicio-right {
+        position: relative;
+        z-index: 2;
+    }
+
+    .servicio-left {
+        flex: 0 0 auto;
+    }
+
+    .servicio-left::before {
+        content: "0" counter(servicio);
+        display: block;
+        font-size: 14px;
+        margin-bottom: 26px;
+        opacity: 0.6;
+    }
+
+    .servicio-nombre,
+    .servicio-row:hover .servicio-nombre {
+        font-size: 26px;
+        line-height: 1.15;
+        text-transform: none;
+        letter-spacing: -0.01em;
+        color: inherit;
+    }
+
+    /* Descripción siempre visible */
+    .servicios-list .servicio-expand,
+    .servicios-list .servicio-row:hover .servicio-expand,
+    .servicios-list .servicio-row.mobile-active .servicio-expand {
+        position: relative;
+        bottom: auto;
+        max-height: none;
+        opacity: 1;
+        margin-top: 24px;
+        padding: 0;
+        overflow: visible;
+    }
+
+    .servicio-expand p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: inherit;
+    }
+
+    .servicio-right {
+        display: none;
+    }
+
+    /* La foto pasa a ser el fondo de la tarjeta activa */
+    .servicios-list .servicio-row .servicio-image,
+    .servicios-list .servicio-row.mobile-active .servicio-image {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        aspect-ratio: auto;
+        margin: 0;
+        border-radius: 0;
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        box-shadow: none;
+        opacity: 0;
+        z-index: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .servicio-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+    }
+
+    .servicios-list .servicio-row.is-active {
+        color: var(--white);
+    }
+
+    .servicios-list .servicio-row.is-active .servicio-image {
+        opacity: 1;
+    }
+}

@@ -332,33 +332,60 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Servicios interactivos en móvil: se abre la fila que tiene el dedo encima
-// mientras te desplazas (sin necesidad de tocar aparte), y se cierra al pasar a la siguiente
+// Servicios en móvil: carrusel horizontal. La tarjeta que queda más centrada
+// se activa (foto de fondo + texto blanco); al tocar una tarjeta se centra.
 (function () {
+    const lista = document.querySelector('.servicios-list');
     const filas = document.querySelectorAll('.servicio-row');
-    if (!filas.length) return;
+    if (!lista || !filas.length) return;
 
-    let filaActiva = null;
+    const movil = window.matchMedia('(max-width: 768px)');
+    let activa = null;
+    let ticking = false;
 
-    function actualizarPorPosicion(touch) {
-        if (!touch) return;
-        const el = document.elementFromPoint(touch.clientX, touch.clientY);
-        const fila = el ? el.closest('.servicio-row') : null;
-
-        if (fila !== filaActiva) {
-            if (filaActiva) filaActiva.classList.remove('mobile-active');
-            if (fila) fila.classList.add('mobile-active');
-            filaActiva = fila;
-        }
+    function activar(fila) {
+        if (fila === activa) return;
+        if (activa) activa.classList.remove('is-active');
+        if (fila) fila.classList.add('is-active');
+        activa = fila;
     }
 
-    document.addEventListener('touchstart', (e) => {
-        actualizarPorPosicion(e.touches[0]);
-    }, { passive: true });
+    function actualizar() {
+        ticking = false;
+        if (!movil.matches) { activar(null); return; }
+        const r = lista.getBoundingClientRect();
+        const centro = r.left + r.width / 2;
+        let mejor = null, dist = Infinity;
+        filas.forEach((f) => {
+            const fr = f.getBoundingClientRect();
+            const d = Math.abs(fr.left + fr.width / 2 - centro);
+            if (d < dist) { dist = d; mejor = f; }
+        });
+        // Al inicio del scroll gana la primera; al final, la última
+        if (lista.scrollLeft <= 4) mejor = filas[0];
+        else if (lista.scrollLeft + lista.clientWidth >= lista.scrollWidth - 4) mejor = filas[filas.length - 1];
+        activar(mejor);
+    }
 
-    document.addEventListener('touchmove', (e) => {
-        actualizarPorPosicion(e.touches[0]);
-    }, { passive: true });
+    function pedirActualizar() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(actualizar);
+    }
+
+    lista.addEventListener('scroll', pedirActualizar, { passive: true });
+    window.addEventListener('resize', pedirActualizar);
+    movil.addEventListener('change', pedirActualizar);
+
+    filas.forEach((f) => {
+        f.addEventListener('click', () => {
+            if (!movil.matches) return;
+            const x = f.offsetLeft - (lista.clientWidth - f.offsetWidth) / 2;
+            lista.scrollTo({ left: x, behavior: 'smooth' });
+        });
+    });
+
+    actualizar();
 })();
 
 // Footer: animación de scroll reveal para la marca de agua "GRACIAS"
