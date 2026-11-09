@@ -343,11 +343,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let activa = null;
     let ticking = false;
 
+    // Indicadores (puntos) bajo el carrusel; solo se ven en móvil (ver CSS)
+    const puntos = document.createElement('div');
+    puntos.className = 'servicios-dots';
+    puntos.setAttribute('aria-hidden', 'true');
+    filas.forEach((f, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.tabIndex = -1;
+        b.addEventListener('click', () => f.click());
+        puntos.appendChild(b);
+    });
+    lista.insertAdjacentElement('afterend', puntos);
+
     function activar(fila) {
         if (fila === activa) return;
         if (activa) activa.classList.remove('is-active');
         if (fila) fila.classList.add('is-active');
         activa = fila;
+        const idx = fila ? Array.prototype.indexOf.call(filas, fila) : -1;
+        Array.prototype.forEach.call(puntos.children, (b, i) => b.classList.toggle('is-on', i === idx));
     }
 
     function actualizar() {
